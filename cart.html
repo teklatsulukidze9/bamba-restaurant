@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bamba - კალათა</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">Bamba 🍔</a>
+      <button class="burger" id="burgerBtn">☰</button>
+      <nav id="navMenu">
+        <a href="index.html">მთავარი</a>
+        <a href="menu.html">მენიუ</a>
+        <a href="cart.html" class="active">კალათა (<span id="cartCount">0</span>)</a>
+        <a href="favorite.html">ფავორიტები (<span id="favCount">0</span>)</a>
+        <a href="auth.html" id="authLink">შესვლა</a>
+      </nav>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </div>
+  </header>
+
+  <main class="container" style="padding:40px 20px;">
+    <h2>შენი კალათა 🛒</h2>
+    <div id="bcart" style="margin-top:20px;"></div>
+    
+    <div style="background:var(--bg-card, #fff); padding:20px; border-radius:12px; border:1px solid var(--border, #eee); display:flex; justify-content:space-between; align-items:center; margin-top:20px;">
+      <h3>სულ: <span id="btotal" style="color:var(--primary, #2563eb);">0.00</span> ₾</h3>
+      <button class="btn-main" style="width:auto; padding:10px 20px; cursor:pointer;" onclick="handleCheckout()">შეკვეთის გაფორმება 🚀</button>
+    </div>
+  </main>
+
+  <script src="bamba-data.js"></script>
+  <script src="bamba.js"></script>
+</body>
+</html>

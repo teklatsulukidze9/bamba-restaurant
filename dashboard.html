@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bamba - ადმინ პანელი</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">Bamba Admin 🛠️</a>
+      <button class="burger" id="burgerBtn">☰</button>
+      <nav id="navMenu">
+        <a href="index.html">მთავარი</a>
+        <a href="menu.html">მენიუ</a>
+        <a href="dashboard.html" class="active">Dashboard</a>
+      </nav>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2 style="margin-bottom:20px; text-align:center;">ადმინისტრატორის პანელი ⚙️</h2>
+
+    <!-- კერძის დამატების ფორმა -->
+    <div class="form-card" style="max-width: 600px; margin-bottom: 40px;">
+      <h3>➕ ახალი კერძის დამატება</h3>
+      <form id="addDishForm" style="margin-top: 15px;">
+        <input type="text" id="dishName" placeholder="კერძის დასახელება (ქართულად)" required>
+        <input type="text" id="dishEng" placeholder="დასახელება (ინგლისურად)" required>
+        <select id="dishCat" style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid var(--border); background:var(--bg-main); color:var(--text-main);" required>
+          <option value="burger">🍔 ბურგერები</option>
+          <option value="pizza">🍕 პიცა</option>
+          <option value="khachapuri">🧀 ხაჭაპური და ცომეული</option>
+          <option value="drinks">🥤 სასმელები</option>
+          <option value="dessert">🍰 დესერტი</option>
+        </select>
+        <input type="number" step="0.01" id="dishPrice" placeholder="ფასი (₾)" required>
+        <input type="url" id="dishImg" placeholder="სურათის URL ბმული" required>
+        <textarea id="dishIngredients" placeholder="ინგრედიენტები / აღწერა..." required></textarea>
+        <button type="submit" class="btn-main">დამატება API-ში</button>
+      </form>
+    </div>
+
+    <!-- მენიუს მართვა (წაშლა / ფასის შეცვლა) -->
+    <h3 style="margin-bottom:15px;">📋 მენიუს მართვა (API)</h3>
+    <div id="adminMenuList" style="display:flex; flex-direction:column; gap:10px; margin-bottom:40px;"></div>
+
+    <!-- შეტყობინებები -->
+    <h3 style="margin-bottom:15px;">✉️ მომხმარებლების შეტყობინებები</h3>
+    <div id="adminMessages" style="background:var(--bg-card); padding:20px; border-radius:12px; border:1px solid var(--border);"></div>
+  </main>
+
+  <script src="dashb.js"></script>
+</body>
+</html>

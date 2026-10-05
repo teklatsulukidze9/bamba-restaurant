@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bamba - მთავარი</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">Bamba 🍔</a>
+      <button class="burger" id="burgerBtn">☰</button>
+      <nav id="navMenu">
+        <a href="index.html" class="active">მთავარი</a>
+        <a href="menu.html">მენიუ</a>
+        <a href="cart.html">კალათა (<span id="cartCount">0</span>)</a>
+        <a href="favorite.html">ფავორიტები (<span id="favCount">0</span>)</a>
+        <a href="contactus.html">კონტაქტი</a>
+      </nav>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="carousel" id="heroCarousel">
+      <div class="carousel-inner" id="carouselInner">
+        <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200');">
+          <div class="carousel-overlay"><h1>მოგესალმებით Bamba-ში</h1><p>საუკეთესო გემოები ქალაქში</p></div>
+        </div>
+        <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200');">
+          <div class="carousel-overlay"><h1>ახალი ინგრედიენტები</h1><p>ყოველდღე საუკეთესო ხარისხი</p></div>
+        </div>
+      </div>
+      <button class="carousel-btn prev" id="prevSlide">❮</button>
+      <button class="carousel-btn next" id="nextSlide">❯</button>
+    </div>
+
+    <h2 style="margin-bottom:20px; text-align:center;">პოპულარული კერძები 🍕</h2>
+    <div class="cards-grid" id="bgrid"></div>
+  </main>
+
+  <script src="bamba-data.js"></script>
+  <script src="bamba.js"></script>
+</body>
+</html>

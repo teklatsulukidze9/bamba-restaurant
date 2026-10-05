@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bamba - ავტორიზაცია</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">Bamba 🍔</a>
+      <button class="burger" id="burgerBtn">☰</button>
+      <nav id="navMenu">
+        <a href="index.html">მთავარი</a>
+        <a href="cart.html">კალათა (<span id="cartCount">0</span>)</a>
+        <a href="favorite.html">ფავორიტები (<span id="favCount">0</span>)</a>
+        <a href="contactus.html">კონტაქტი</a>
+        <a href="auth.html" class="active" id="authLink">შესვლა</a>
+        <a href="dashboard.html" id="dashLink" style="display:none;">Dashboard</a>
+      </nav>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="form-card" id="authBox">
+      <!-- Login -->
+      <form id="loginForm">
+        <h2>შესვლა</h2>
+        <input type="text" id="lUser" placeholder="მომხმარებელი (admin)" required>
+        <input type="password" id="lPass" placeholder="პაროლი (admin)" required>
+        <label style="display:flex; gap:8px; align-items:center; margin-bottom:15px; font-size:14px;">
+          <input type="checkbox" id="rememberMe" style="width:auto; margin:0;"> დამიმახსოვრე (localStorage)
+        </label>
+        <button type="submit" class="btn-main" style="width:100%;">შესვლა</button>
+        <p style="margin-top:15px; font-size:14px;">
+          არ გაქვს ანგარიში? <a href="#" id="toReg">რეგისტრაცია</a> | <a href="#" id="toRec">აღდგენა</a>
+        </p>
+      </form>
+
+      <!-- Register -->
+      <form id="regForm" style="display:none;">
+        <h2>რეგისტრაცია</h2>
+        <input type="text" id="rUser" placeholder="მომხმარებელი" required>
+        <input type="email" id="rEmail" placeholder="ელ-ფოსტა" required>
+        <input type="password" id="rPass" placeholder="პაროლი" required>
+        <button type="submit" class="btn-main" style="width:100%;">რეგისტრაცია</button>
+        <p style="margin-top:15px; font-size:14px;"><a href="#" id="toLog1">უკან შესვლაზე</a></p>
+      </form>
+
+      <!-- Recovery -->
+      <form id="recForm" style="display:none;">
+        <h2>პაროლის აღდგენა</h2>
+        <input type="email" id="recEmail" placeholder="ელ-ფოსტა" required>
+        <button type="submit" class="btn-main" style="width:100%;">გაგზავნა</button>
+        <p style="margin-top:15px; font-size:14px;"><a href="#" id="toLog2">უკან შესვლაზე</a></p>
+      </form>
+    </div>
+  </main>
+
+  <script src="bamba-data.js"></script>
+  <script src="bamba.js"></script>
+  <script>
+    const lForm = $('#loginForm'), rForm = $('#regForm'), recForm = $('#recForm');
+    $('#toReg').onclick = () => { lForm.style.display='none'; rForm.style.display='block'; };
+    $('#toRec').onclick = () => { lForm.style.display='none'; recForm.style.display='block'; };
+    $('#toLog1').onclick = () => { rForm.style.display='none'; lForm.style.display='block'; };
+    $('#toLog2').onclick = () => { recForm.style.display='none'; lForm.style.display='block'; };
+
+    lForm.onsubmit = e => {
+      e.preventDefault();
+      const u = $('#lUser').value, p = $('#lPass').value;
+      const rem = $('#rememberMe').checked;
+      const userObj = { user: u, role: u === 'admin' ? 'admin' : 'user' };
+      if (rem) localStorage.setItem('user', JSON.stringify(userObj));
+      else sessionStorage.setItem('user', JSON.stringify(userObj));
+      alert('წარმატებული ავტორიზაცია!');
+      window.location.href = u === 'admin' ? 'dashboard.html' : 'index.html';
+    };
+  </script>
+</body>
+</html>
